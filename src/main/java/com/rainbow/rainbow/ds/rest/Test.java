@@ -18,5 +18,12 @@ public class Test {
 	public Response test1() {
 		return Response.status(Status.OK).entity("good").build();
 	}
+	
+	@GET
+	@Produces(MediaType.TEXT_PLAIN)
+	@Path("t2")
+	public Response test2() {
+		return Response.status(Status.OK).entity("aaaaaa").build();
+	}
 
 }
