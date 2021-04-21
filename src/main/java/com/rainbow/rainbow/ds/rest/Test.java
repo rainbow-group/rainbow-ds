@@ -7,16 +7,21 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import com.rainbow.rainbow.ds.repo.TestRepo;
+
 
 @Path("test")
 public class Test {
 	
+
+	private TestRepo testRepo;
 	
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
 	@Path("t1")
 	public Response test1() {
-		return Response.status(Status.OK).entity("good").build();
+		testRepo = new TestRepo();
+		return Response.status(Status.OK).entity(testRepo.test()).build();
 	}
 	
 	@GET
