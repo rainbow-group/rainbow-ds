@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.rainbow.rainbow.ds.repo.BaseRepository;
 import com.rainbow.rainbow.ds.vo.barburg.Category;
+import com.rainbow.rainbow.ds.vo.barburg.Product;
 
 public class ProdRepo extends BaseRepository {
 
@@ -35,6 +36,35 @@ public class ProdRepo extends BaseRepository {
 		}
 
 		return list;
+	}
+	
+	public List<Product> getActiveProdByCategory(String categoryId){
+		
+		String sql = "select * from product where active_ind = 'Y' and category_Id=" + categoryId
+				+ " order by order_by";
+		
+		List<Product> list = new ArrayList<Product>();
+		Connection conn = this.rainbowConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Product c = new Product();
+				this.fillData(c, rs);
+
+				list.add(c);
+			}
+		} catch (SQLException e) {
+
+		} finally {
+			close(rs, pstmt, conn);
+		}
+
+		return list;
+		
 	}
 
 }
