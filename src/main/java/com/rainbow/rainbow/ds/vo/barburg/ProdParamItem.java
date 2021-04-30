@@ -2,22 +2,25 @@ package com.rainbow.rainbow.ds.vo.barburg;
 
 import com.rainbow.rainbow.annotation.Column;
 
-public class Category {
+public class ProdParamItem {
 
 	@Column(name = "id")
 	Integer id;
 
-	@Column(name = "name")
-	String name;
+	@Column(name = "prod_id")
+	Integer prodId;
 
-	@Column(name = "e_Name")
-	String eName;
+	@Column(name = "content")
+	String content;
 
 	@Column(name = "order_by")
 	Integer orderBy;
 
 	@Column(name = "active_ind")
 	String activeInd;
+
+	@Column(name = "name")
+	String name;
 
 	public Integer getId() {
 		return id;
@@ -27,20 +30,20 @@ public class Category {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public Integer getProdId() {
+		return prodId;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setProdId(Integer prodId) {
+		this.prodId = prodId;
 	}
 
-	public String geteName() {
-		return eName;
+	public String getContent() {
+		return content;
 	}
 
-	public void seteName(String eName) {
-		this.eName = eName;
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 	public Integer getOrderBy() {
@@ -57,6 +60,14 @@ public class Category {
 
 	public void setActiveInd(String activeInd) {
 		this.activeInd = activeInd;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

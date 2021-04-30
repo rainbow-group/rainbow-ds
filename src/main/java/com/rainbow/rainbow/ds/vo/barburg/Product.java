@@ -1,6 +1,7 @@
 package com.rainbow.rainbow.ds.vo.barburg;
 
 import java.util.Date;
+import java.util.List;
 
 import com.rainbow.rainbow.annotation.Column;
 
@@ -29,6 +30,9 @@ public class Product {
 
 	@Column(name = "active_ind")
 	String activeInd;
+
+	List<ProdInfoItem> infoList;
+	List<ProdParamItem> paramsList;
 
 	public Integer getId() {
 		return id;
@@ -92,6 +96,22 @@ public class Product {
 
 	public void setActiveInd(String activeInd) {
 		this.activeInd = activeInd;
+	}
+
+	public List<ProdInfoItem> getInfoList() {
+		return infoList;
+	}
+
+	public void setInfoList(List<ProdInfoItem> infoList) {
+		this.infoList = infoList;
+	}
+
+	public List<ProdParamItem> getParamsList() {
+		return paramsList;
+	}
+
+	public void setParamsList(List<ProdParamItem> paramsList) {
+		this.paramsList = paramsList;
 	}
 
 }

@@ -26,14 +26,25 @@ public class ProdService extends BaseService {
 		prodRepo = new ProdRepo();
 		return Response.status(Status.OK).entity(this.getJsonStr(prodRepo.getCategories())).build();
 	}
-	
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("list/{categoryId}")
-	public Response getProdByCategory(@PathParam ("categoryId") String categoryId) {
+	public Response getProdByCategory(@PathParam("categoryId") String categoryId) {
 		prodRepo = new ProdRepo();
 		List<Product> list = prodRepo.getActiveProdByCategory(categoryId);
 		return Response.status(Status.OK).entity(this.getJsonStr(list)).build();
+	}
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("{productId}")
+	public Response getProdById(@PathParam("productId") String productId) {
+		prodRepo = new ProdRepo();
+		Product prod = prodRepo.getProdDetailById(productId);
+		prod.setInfoList(prodRepo.getProdInfoListByProdId(productId));
+		prod.setParamsList(prodRepo.getProdParamsListByProdId(productId));
+		return Response.status(Status.OK).entity(this.getJsonStr(prod)).build();
 	}
 
 }
